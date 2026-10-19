@@ -1,432 +1,597 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lufthi Arief Syabana - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lufthi Arief Syabana | IT &amp; Data Professional</title>
+<meta name="description" content="Portfolio of Lufthi Arief Syabana: data analytics, automation, and machine learning projects.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Crect width='800' height='800' fill='%23eeebe6'/%3E%3Ccircle cx='400' cy='400' r='355' fill='none' stroke='%23212121' stroke-width='50'/%3E%3Cg fill='%23e3001b'%3E%3Ccircle cx='400' cy='208' r='106'/%3E%3Ccircle cx='217' cy='340' r='106'/%3E%3Ccircle cx='583' cy='340' r='106'/%3E%3Ccircle cx='287' cy='555' r='106'/%3E%3Ccircle cx='513' cy='555' r='106'/%3E%3C/g%3E%3C/svg%3E">
+<script>
+  // Apply saved theme before first paint to avoid a flash.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+    document.documentElement.setAttribute('data-theme', t || 'light');
+  })();
+</script>
+<style>
+  :root {
+    /* Brand palette taken from the aarief group logo */
+    --red: #E3001B;
+    --charcoal: #212121;
+    --cream: #EEEBE6;
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #A8d8b9;
-            line-height: 1.7;
-            color: #2d3748;
-            scroll-behavior: smooth;
-        }
+    --bg: #EEEBE6;
+    --surface: #ffffff;
+    --alt: #f7f5f1;
+    --text: #212121;
+    --muted: #5d5953;
+    --line: #dcd7ce;
+    --red-ink: #C2001A;
+    --chip-bg: #fce8ea;
+    --chip-text: #a30015;
+    --shadow: 0 1px 2px rgba(33,33,33,.06), 0 8px 24px rgba(33,33,33,.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #161616;
+    --surface: #212121;
+    --alt: #1b1b1b;
+    --text: #eeebe6;
+    --muted: #a9a49b;
+    --line: #34322f;
+    --red-ink: #ff5a6c;
+    --chip-bg: #3a1b20;
+    --chip-text: #ff909c;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            min-height: 100vh;
-            gap: 60px;
-        }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    font-family: Inter, "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 4px; }
 
-        /* Left Sidebar */
-        .sidebar {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            padding: 100px 0 80px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(24,24,24,.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(238,235,230,.08);
+    color: var(--cream);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .04em; font-size: 16px; white-space: nowrap; }
+  @media (max-width: 380px) { .brand { font-size: 14px; gap: 9px; } .brand svg { width: 26px; height: 26px; } }
+  .brand svg { width: 30px; height: 30px; color: var(--cream); }
+  .menu { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+  .menu a { padding: 6px 0; border-bottom: 2px solid transparent; opacity: .85; transition: opacity .2s, border-color .2s; }
+  .menu a:hover, .menu a.active { opacity: 1; border-bottom-color: var(--red); }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    width: 38px; height: 38px; display: inline-grid; place-items: center;
+    background: transparent; color: var(--cream); border: 1px solid rgba(238,235,230,.18);
+    border-radius: 10px; cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(238,235,230,.08); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .sun { display: none; }
+  :root[data-theme="dark"] .sun { display: block; }
+  :root[data-theme="dark"] .moon { display: none; }
+  .burger { display: none; }
 
-        .profile-section {
-            margin-bottom: 60px;
-        }
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; overflow: hidden; color: var(--cream);
+    background:
+      radial-gradient(900px 420px at 85% 10%, rgba(227,0,27,.28), transparent 60%),
+      radial-gradient(700px 400px at 0% 100%, rgba(227,0,27,.12), transparent 60%),
+      linear-gradient(135deg, #141414 0%, #212121 55%, #1a1a1a 100%);
+  }
+  .hero { min-height: calc(100vh - 64px); min-height: calc(100svh - 64px); display: flex; align-items: center; }
+  .hero .waves { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero-inner { position: relative; padding: 76px 0 84px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; }
+  .eyebrow { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: #ff6a7a; margin: 0 0 18px; }
+  h1 { font-size: clamp(36px, 5.2vw, 58px); line-height: 1.08; margin: 0 0 22px; letter-spacing: -.02em; font-weight: 800; }
+  h1 em { font-style: normal; color: var(--red); }
+  .lead { max-width: 520px; color: rgba(238,235,230,.82); font-size: 17px; margin: 0 0 30px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 8px;
+    font-weight: 600; font-size: 15px; border: 1.5px solid transparent; cursor: pointer;
+    transition: transform .15s, background .2s, border-color .2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn.primary { background: var(--red); color: #fff; }
+  .btn.primary:hover { background: #f0122c; }
+  .btn.ghost { border-color: rgba(238,235,230,.55); color: var(--cream); }
+  .btn.ghost:hover { background: rgba(238,235,230,.08); border-color: var(--cream); }
+  .social { display: flex; flex-wrap: wrap; gap: 26px; font-size: 14.5px; }
+  .social a { display: inline-flex; align-items: center; gap: 9px; opacity: .88; }
+  .social a:hover { opacity: 1; color: #fff; }
+  .social svg { width: 19px; height: 19px; }
+  .motto { justify-self: end; border-left: 3px solid var(--red); padding-left: 18px; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; line-height: 2; color: rgba(238,235,230,.8); }
 
-        h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
+  /* ---------- Sections ---------- */
+  section { padding: 72px 0; }
+  .band { background: var(--surface); }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+  .kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--red-ink); margin: 0 0 6px; }
+  h2 { margin: 0; font-size: clamp(26px, 3vw, 34px); letter-spacing: -.01em; line-height: 1.2; }
+  .sub { margin: 8px 0 0; color: var(--muted); }
+  .more { color: var(--red-ink); font-weight: 600; font-size: 15px; }
+  .more:hover { text-decoration: underline; }
 
-        .subtitle {
-            font-size: 1.4rem;
-            color: #4a5568;
-            margin-bottom: 50px;
-            font-weight: 500;
-        }
+  /* Project cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .2s, border-color .2s; }
+  .card:hover { transform: translateY(-3px); border-color: var(--red); }
+  .thumb { position: relative; aspect-ratio: 2 / 1; background: #1c1c1c; overflow: hidden; }
+  .thumb svg, .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card-body { padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .tags li { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-text); }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
+  .links { display: flex; gap: 18px; font-size: 13.5px; font-weight: 600; padding-top: 6px; border-top: 1px solid var(--line); }
+  .links a { display: inline-flex; align-items: center; gap: 6px; padding-top: 10px; color: var(--text); }
+  .links a:hover { color: var(--red-ink); }
+  .links svg { width: 15px; height: 15px; }
 
-        /* Navigation */
-        .nav {
-            list-style: none;
-            margin-bottom: 60px;
-        }
+  /* Skills */
+  .two { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: start; }
+  .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; margin-top: 24px; }
+  .chip { display: flex; align-items: center; gap: 10px; padding: 11px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; font-weight: 500; }
+  .ico { width: 28px; height: 28px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; background: var(--c, #444); letter-spacing: -.02em; }
 
-        .nav li {
-            margin-bottom: 20px;
-        }
+  /* About */
+  .about p { color: var(--muted); margin: 14px 0 0; }
+  .ticks { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; font-size: 14.5px; }
+  .ticks li { display: flex; align-items: center; gap: 10px; }
+  .ticks li::before { content: ""; width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
 
-        .nav a {
-            text-decoration: none;
-            color: #4a5568;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 12px 0;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+  /* Resume + contact */
+  .cta { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); color: var(--cream); border-radius: 16px; padding: 36px 40px; position: relative; overflow: hidden; }
+  .cta::after { content: ""; position: absolute; right: -60px; top: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(227,0,27,.5), transparent 70%); pointer-events: none; }
+  .cta h2 { color: var(--cream); }
+  .cta p { margin: 8px 0 0; color: rgba(238,235,230,.75); max-width: 520px; }
+  .cta .btns { margin: 0; position: relative; z-index: 1; }
+  .contact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 26px; }
+  .contact-item { display: flex; align-items: center; gap: 14px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; transition: border-color .2s, transform .2s; }
+  .contact-item:hover { border-color: var(--red); transform: translateY(-2px); }
+  .contact-item .ci { width: 42px; height: 42px; border-radius: 10px; background: var(--chip-bg); color: var(--red-ink); display: grid; place-items: center; flex: none; }
+  .contact-item .ci svg { width: 20px; height: 20px; }
+  .contact-item small { display: block; color: var(--muted); font-size: 12.5px; }
+  .contact-item strong { font-size: 14.5px; word-break: break-word; }
 
-        .nav a:hover {
-            color: #1a202c;
-            padding-left: 25px;
-        }
+  /* Footer */
+  footer.site { border-top: 1px solid var(--line); padding: 22px 0; font-size: 13.5px; color: var(--muted); }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot nav { display: flex; gap: 22px; align-items: center; }
+  .foot a:hover { color: var(--red-ink); }
+  .top { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); display: inline-grid; place-items: center; color: var(--red-ink); }
+  .top svg { width: 16px; height: 16px; }
 
-        .nav a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 0;
-            height: 2px;
-            background-color: #1a202c;
-            transition: width 0.3s ease;
-            transform: translateY(-50%);
-        }
-
-        .nav a:hover::before {
-            width: 20px;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 25px;
-            margin-top: auto;
-        }
-
-        .social-links a {
-            color: #718096;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-links a:hover {
-            color: #1a202c;
-            transform: translateY(-3px);
-        }
-
-        .social-links svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 100px 0 80px 0;
-        }
-
-        .section {
-            margin-bottom: 100px;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: #1a202c;
-            margin-bottom: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* About Section */
-        .about-text {
-            font-size: 1.2rem;
-            color: #4a5568;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .about-text a {
-            color: #1a202c;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid #1a202c;
-            transition: all 0.3s ease;
-        }
-
-        .about-text a:hover {
-            color: #4a5568;
-            border-bottom-color: #4a5568;
-        }
-
-        /* Project Cards */
-        .project-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
-            padding: 35px;
-            margin-bottom: 35px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1a202c, #4a5568);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-
-        .project-image {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .project-info h3 a {
-            color: #1a202c;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .project-info h3 a:hover {
-            color: #4a5568;
-        }
-
-        .project-period {
-            font-size: 0.95rem;
-            color: #718096;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .project-description {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tech-tag {
-            background-color: rgba(26, 32, 44, 0.1);
-            color: #1a202c;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .sidebar {
-                position: static;
-                height: auto;
-                padding: 50px 0;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .project-header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .project-image {
-                width: 100%;
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 56px 0 60px; }
+    .motto { justify-self: start; }
+    .two { grid-template-columns: 1fr; gap: 44px; }
+    .burger { display: inline-grid; }
+    .menu {
+      position: absolute; left: 0; right: 0; top: 64px; flex-direction: column; align-items: stretch; gap: 0;
+      background: #181818; border-bottom: 1px solid rgba(238,235,230,.1); padding: 8px 16px 14px; display: none;
+    }
+    .menu.open { display: flex; }
+    .menu a { display: block; padding: 12px 0; border-bottom: 1px solid rgba(238,235,230,.08); }
+    section { padding: 56px 0; }
+  }
+  @media (max-width: 520px) {
+    .ticks { grid-template-columns: 1fr; }
+    .cta { padding: 28px 22px; }
+    .btns .btn { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Sidebar -->
-        <div class="sidebar">
-            <div class="profile-section">
-                <h1>Lufthi Arief Syabana</h1>
-                <p class="subtitle">Technical Systems Specialist & Data Enthusiast</p>
-                
-                <ul class="nav">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                </ul>
-                
-                <div class="social-links">
-                    <a href="https://github.com/aarief-s" title="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/lufthi-arief/" title="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                    <a href="https://lufthi73.com@gmail.com" title="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </a>
-                    <a href="https://medium.com/@lufthi73.com" title="Medium">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- About Section -->
-            <section id="about" class="section">
-                <h2>About</h2>
-                <p class="about-text">I'm a technical systems professional with 9+ years in operations optimization and data management, actively transitioning into data science. My extensive background in database systems and analytical processes provides a strong foundation for extracting meaningful insights from complex datasets.</p>
-                
-                <p class="about-text">Currently, I'm building expertise in statistical analysis, machine learning, and data visualization through comprehensive training and practical application. I specialize in bridging technical operations with data-driven decision making.</p>
-                
-                <p class="about-text">I'm passionate about solving complex business problems and actively seeking Data Analyst or Junior Data Scientist opportunities. <a href="about.html">Explore More...</a></p>
-            </section>
+<!-- Logo mark (aarief group) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 800 800">
+      <circle cx="400" cy="400" r="355" fill="none" stroke="currentColor" stroke-width="50"/>
+      <g fill="#E3001B">
+        <circle cx="400" cy="208" r="106"/><circle cx="217" cy="340" r="106"/><circle cx="583" cy="340" r="106"/>
+        <circle cx="287" cy="555" r="106"/><circle cx="513" cy="555" r="106"/>
+      </g>
+      <circle cx="400" cy="400" r="22" fill="none" stroke="currentColor" stroke-width="9"/>
+      <g fill="currentColor">
+        <circle cx="455" cy="400" r="9"/><circle cx="439" cy="439" r="9"/><circle cx="400" cy="455" r="9"/><circle cx="361" cy="439" r="9"/>
+        <circle cx="345" cy="400" r="9"/><circle cx="361" cy="361" r="9"/><circle cx="400" cy="345" r="9"/><circle cx="439" cy="361" r="9"/>
+      </g>
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 5.5h18v13H3z M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-5-5m5 5l-5 5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></symbol>
+  </defs>
+</svg>
 
-            <!-- Projects Section -->
-            <section id="projects" class="section">
-                <h2>Featured Projects</h2>
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop" alt="Sales Revenue Prediction" class="project-image">
-                        <div class="project-info">
-                            <h3><a href="https://drive.google.com/drive/folders/1L0fO_r5reO2QX4DPf0JRIVsKNQ-8Aecl?usp=drive_link" target="_blank">Sales Revenue Prediction</a></h3>
-                            <div class="project-period">2025</div>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        This is a business analytics project that uses the CRISP-DM methodology to predict sales revenue and optimize pricing and discounting strategies to increase retail profitability.
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Reporting</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">CRISP-DM</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="California Housing Dashboard" class="project-image">
-                        <div class="project-info">
-                            <h3><a href="https://tugas-st-california.streamlit.app/" target="_blank">California Housing Dashboard</a></h3>
-                            <div class="project-period">2025</div>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Interactive dashboard for visualization and analysis of California housing price dataset using Streamlit.
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Dashboard</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="California Housing Dashboard" class="project-image">
-                        <div class="project-info">
-                            <h3><a href="https://tugas-st-california.streamlit.app/" target="_blank">California Housing Dashboard.1</a></h3>
-                            <div class="project-period">2025</div>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Interactive dashboard for visualization and analysis of California housing price dataset using Streamlit.
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Dashboard</span>
-                    </div>
-                </div>
-            </section>
-        </div>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Lufthi Arief Syabana, home">
+      <svg aria-hidden="true"><use href="#mark"/></svg>
+      <span>Lufthi Arief Syabana</span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <div class="hero" id="home">
+    <svg class="waves" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="wg" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#E3001B" stop-opacity="0"/>
+          <stop offset=".55" stop-color="#E3001B" stop-opacity=".65"/>
+          <stop offset="1" stop-color="#E3001B" stop-opacity=".15"/>
+        </linearGradient>
+        <linearGradient id="wf" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#E3001B" stop-opacity="0"/>
+          <stop offset="1" stop-color="#E3001B" stop-opacity=".22"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 430 C 300 310, 540 520, 840 370 S 1260 170, 1440 270 L1440 520 L0 520Z" fill="url(#wf)"/>
+      <path d="M0 395 C 320 275, 570 480, 870 330 S 1260 140, 1440 230" fill="none" stroke="url(#wg)" stroke-width="2"/>
+      <path d="M0 365 C 330 250, 590 450, 890 300 S 1270 115, 1440 200" fill="none" stroke="url(#wg)" stroke-width="1.2" opacity=".6"/>
+      <path d="M0 335 C 340 225, 610 420, 910 275 S 1280 95, 1440 175" fill="none" stroke="url(#wg)" stroke-width=".8" opacity=".4"/>
+      <!-- faint logo motif -->
+      <g transform="translate(1150 235)" opacity=".5">
+        <circle r="213" fill="none" stroke="#EEEBE6" stroke-opacity=".07" stroke-width="30"/>
+        <g fill="#E3001B" fill-opacity=".13">
+          <circle cx="0" cy="-115" r="64"/><circle cx="-110" cy="-36" r="64"/><circle cx="110" cy="-36" r="64"/>
+          <circle cx="-68" cy="93" r="64"/><circle cx="68" cy="93" r="64"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">IT &amp; Data Professional</p>
+        <h1>Building practical <em>data solutions.</em></h1>
+        <p class="lead">IT professional with 9+ years in technical operations and data management, building practical projects in data analytics, workflow automation, and machine learning.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">View My Projects <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn ghost" href="resume.pdf" download><svg aria-hidden="true"><use href="#i-down"/></svg> Download Resume</a>
+        </div>
+        <div class="social">
+          <a href="https://github.com/aarief-s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+          <a href="https://www.linkedin.com/in/lufthi-arief/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
+          <a href="mailto:lufthi73.com@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg> Email</a>
+        </div>
+      </div>
+      <div class="motto">Better Data<br>Better Decisions<br>A More Efficient Tomorrow</div>
+    </div>
+  </div>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">Featured Projects</p>
+          <h2>Selected Projects</h2>
+          <p class="sub">A few projects that showcase my skills in data, automation, and product development.</p>
+        </div>
+        <a class="more" href="https://github.com/aarief-s?tab=repositories" target="_blank" rel="noopener">View all projects &rarr;</a>
+      </div>
+
+      <!--
+        To use a real screenshot on any card, save it as assets/<name>.png.
+        It is laid over the placeholder illustration automatically.
+      -->
+      <div class="grid">
+
+        <!-- 1. CV Screening with n8n -->
+        <article class="card">
+          <div class="thumb">
+            <svg viewBox="0 0 220 110" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="110" fill="#1b1b1b"/>
+              <g stroke="#E3001B" stroke-width="1.4" fill="none" opacity=".9">
+                <path d="M52 30h28M52 80h28M120 30h30M120 80h30M80 30v50M150 30v50M80 55h70"/>
+              </g>
+              <g fill="#2b2b2b" stroke="#EEEBE6" stroke-opacity=".25">
+                <rect x="22" y="18" width="34" height="24" rx="5"/><rect x="22" y="68" width="34" height="24" rx="5"/>
+                <rect x="86" y="43" width="40" height="24" rx="5"/>
+                <rect x="150" y="18" width="34" height="24" rx="5"/><rect x="150" y="68" width="34" height="24" rx="5"/>
+              </g>
+              <g fill="#E3001B"><circle cx="39" cy="30" r="4"/><circle cx="39" cy="80" r="4"/><circle cx="106" cy="55" r="4"/><circle cx="167" cy="30" r="4"/><circle cx="167" cy="80" r="4"/></g>
+            </svg>
+            <img src="assets/cv-screening.png" alt="CV Screening workflow screenshot" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>CV Screening with n8n</h3>
+            <ul class="tags"><li>Automation</li><li>n8n</li><li>API</li></ul>
+            <p>Automated CV screening workflow, integrating multiple services and data validation.</p>
+            <div class="links">
+              <!-- TODO: replace with the exact repo URL -->
+              <a href="https://github.com/aarief-s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Transport Data Pipeline -->
+        <article class="card">
+          <div class="thumb">
+            <svg viewBox="0 0 220 110" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="110" fill="#f4f1ec"/>
+              <g fill="#E3001B"><rect x="14" y="62" width="12" height="34"/><rect x="30" y="48" width="12" height="48"/><rect x="46" y="36" width="12" height="60"/><rect x="62" y="52" width="12" height="44"/><rect x="78" y="28" width="12" height="68"/><rect x="94" y="44" width="12" height="52"/></g>
+              <path d="M124 30c14-8 34-6 48 2s28 4 38 14c4 14-6 30-22 36s-34 0-50-8-22-24-14-44Z" fill="#212121" opacity=".85"/>
+              <g fill="#E3001B"><circle cx="146" cy="52" r="3.5"/><circle cx="170" cy="64" r="3.5"/><circle cx="190" cy="50" r="3.5"/><circle cx="160" cy="82" r="3.5"/></g>
+              <path d="M146 52L170 64L190 50M170 64L160 82" stroke="#EEEBE6" stroke-width="1" fill="none"/>
+            </svg>
+            <img src="assets/transport-pipeline.png" alt="Transport data pipeline screenshot" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Transport Data Pipeline</h3>
+            <ul class="tags"><li>Data Engineering</li><li>Python</li><li>ETL</li></ul>
+            <p>Built a data pipeline to collect, transform, and analyze transport data with automated validation.</p>
+            <div class="links">
+              <!-- TODO: replace with the exact repo URL -->
+              <a href="https://github.com/aarief-s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Predictive Analysis -->
+        <article class="card">
+          <div class="thumb">
+            <svg viewBox="0 0 220 110" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="110" fill="#f4f1ec"/>
+              <path d="M10 78 L40 62 L68 70 L98 44 L128 52 L158 30 L188 38" fill="none" stroke="#212121" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M10 88 L40 80 L68 84 L98 66 L128 70 L158 56 L188 60" fill="none" stroke="#E3001B" stroke-width="2.2" stroke-linejoin="round"/>
+              <g fill="#212121" opacity=".25"><rect x="12" y="94" width="10" height="10"/><rect x="30" y="90" width="10" height="14"/><rect x="48" y="96" width="10" height="8"/><rect x="66" y="88" width="10" height="16"/><rect x="84" y="92" width="10" height="12"/></g>
+              <circle cx="178" cy="78" r="20" fill="none" stroke="#212121" stroke-width="10" opacity=".85"/>
+              <circle cx="178" cy="78" r="20" fill="none" stroke="#E3001B" stroke-width="10" stroke-dasharray="52 74" transform="rotate(-90 178 78)"/>
+            </svg>
+            <img src="assets/predictive-analysis.png" alt="Predictive analysis screenshot" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Predictive Analysis</h3>
+            <ul class="tags"><li>Data Science</li><li>Python</li><li>ML</li></ul>
+            <p>Exploratory analysis and predictive modeling to find patterns and insights from real-world datasets.</p>
+            <div class="links">
+              <a href="https://github.com/aarief-s/Predictive-Analisis" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Dashboard Airbnb -->
+        <article class="card">
+          <div class="thumb">
+            <svg viewBox="0 0 220 110" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="110" fill="#f4f1ec"/>
+              <rect x="0" y="0" width="220" height="14" fill="#212121"/>
+              <circle cx="9" cy="7" r="3" fill="#E3001B"/>
+              <path d="M14 30c10-8 26-8 36-2s24 4 30 14c2 12-8 22-22 24s-30-6-38-16-8-14-6-20Z" fill="#212121" opacity=".85"/>
+              <g fill="#E3001B"><circle cx="34" cy="44" r="3"/><circle cx="52" cy="52" r="3"/><circle cx="68" cy="46" r="3"/></g>
+              <path d="M100 74 L120 56 L140 64 L160 40 L182 48 L206 30" fill="none" stroke="#E3001B" stroke-width="2.2" stroke-linejoin="round"/>
+              <g fill="#212121" opacity=".8"><rect x="100" y="86" width="14" height="14"/><rect x="120" y="80" width="14" height="20"/><rect x="140" y="84" width="14" height="16"/><rect x="160" y="76" width="14" height="24"/><rect x="180" y="82" width="14" height="18"/></g>
+              <rect x="100" y="20" width="106" height="8" rx="2" fill="#212121" opacity=".2"/>
+            </svg>
+            <img src="assets/dashboard-airbnb.png" alt="Airbnb dashboard screenshot" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Dashboard Airbnb</h3>
+            <ul class="tags"><li>Data Analytics</li><li>SQL</li><li>Tableau</li></ul>
+            <p>Interactive dashboard to analyze listing trends, occupancy, and revenue insights.</p>
+            <div class="links">
+              <a href="https://github.com/aarief-s/Dashboard-Airbnb" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. CekSkincare -->
+        <article class="card">
+          <div class="thumb">
+            <svg viewBox="0 0 220 110" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="110" fill="#f9e3e6"/>
+              <rect x="0" y="0" width="220" height="12" fill="#ffffff"/>
+              <circle cx="10" cy="6" r="3" fill="#E3001B"/>
+              <rect x="14" y="26" width="86" height="8" rx="2" fill="#212121" opacity=".75"/>
+              <rect x="14" y="40" width="64" height="5" rx="2" fill="#212121" opacity=".3"/>
+              <rect x="14" y="52" width="40" height="14" rx="7" fill="#E3001B"/>
+              <rect x="128" y="30" width="26" height="62" rx="6" fill="#c2543f"/>
+              <rect x="134" y="20" width="14" height="12" rx="3" fill="#212121"/>
+              <rect x="164" y="48" width="22" height="44" rx="6" fill="#f3b7b0"/>
+              <rect x="169" y="40" width="12" height="10" rx="3" fill="#E3001B"/>
+              <rect x="194" y="62" width="16" height="30" rx="4" fill="#ffffff"/>
+            </svg>
+            <img src="assets/cekskincare.png" alt="CekSkincare screenshot" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>CekSkincare</h3>
+            <ul class="tags"><li>Product</li><li>Next.js</li><li>Supabase</li></ul>
+            <p>Skincare intelligence platform for product discovery, ingredient info, and price comparison.</p>
+            <div class="links">
+              <a href="https://cekskincare.id" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ext"/></svg> Visit Site</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS + ABOUT ================= -->
+  <section class="band" id="about">
+    <div class="wrap two">
+      <div id="skills">
+        <p class="kicker">Skills &amp; Technologies</p>
+        <h2>Skills &amp; Tech Stack</h2>
+        <p class="sub">Tools and technologies I work with.</p>
+        <div class="chips">
+          <div class="chip"><span class="ico" style="--c:#3776AB">Py</span>Python</div>
+          <div class="chip"><span class="ico" style="--c:#0f6fbf">SQL</span>SQL</div>
+          <div class="chip"><span class="ico" style="--c:#336791">Pg</span>PostgreSQL</div>
+          <div class="chip"><span class="ico" style="--c:#2496ED">Dk</span>Docker</div>
+          <div class="chip"><span class="ico" style="--c:#F05032">Git</span>Git</div>
+          <div class="chip"><span class="ico" style="--c:#EA4B71">n8</span>n8n</div>
+          <div class="chip"><span class="ico" style="--c:#017CEE">Af</span>Airflow</div>
+          <div class="chip"><span class="ico" style="--c:#F2C811;color:#212121">BI</span>Power BI</div>
+          <div class="chip"><span class="ico" style="--c:#E97627">Tb</span>Tableau</div>
+          <div class="chip"><span class="ico" style="--c:#217346">Xl</span>Excel</div>
+          <div class="chip"><span class="ico" style="--c:#7A3FE0">ML</span>Machine Learning</div>
+          <div class="chip"><span class="ico" style="--c:#FF4B4B">St</span>Streamlit</div>
+          <div class="chip"><span class="ico" style="--c:#111">Nx</span>Next.js</div>
+          <div class="chip"><span class="ico" style="--c:#2FAE76">Sb</span>Supabase</div>
+        </div>
+      </div>
+
+      <div class="about">
+        <p class="kicker">About Me</p>
+        <h2>More About Me</h2>
+        <p>I have 9+ years of experience in technical operations and data management, from IT support and system operations to logistics. I now focus on building data analytics, workflow automation, and machine learning solutions through real projects and continuous learning.</p>
+        <p>I enjoy turning complex problems into simple, practical solutions, and I'm always open to new challenges, especially remote roles and international opportunities.</p>
+        <ul class="ticks">
+          <li>Problem solving</li><li>Team collaboration</li>
+          <li>Continuous learning</li><li>Adaptable</li>
+          <li>Detail oriented</li><li>Results driven</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESUME ================= -->
+  <section id="resume">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <p class="kicker" style="color:#ff6a7a">Resume</p>
+          <h2>Want the full picture?</h2>
+          <p>A one-page summary of my experience, skills, and projects.</p>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="resume.pdf" download><svg aria-hidden="true"><use href="#i-down"/></svg> Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <p class="kicker">Contact</p>
+      <h2>Let's connect</h2>
+      <p class="sub">Open to data, automation, and ML opportunities. The fastest way to reach me is email.</p>
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:lufthi73.com@gmail.com">
+          <span class="ci"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <span><small>Email</small><strong>lufthi73.com@gmail.com</strong></span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/lufthi-arief/" target="_blank" rel="noopener">
+          <span class="ci"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+          <span><small>LinkedIn</small><strong>in/lufthi-arief</strong></span>
+        </a>
+        <a class="contact-item" href="https://github.com/aarief-s" target="_blank" rel="noopener">
+          <span class="ci"><svg aria-hidden="true"><use href="#i-github"/></svg></span>
+          <span><small>GitHub</small><strong>aarief-s</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <span>&copy; 2026 Lufthi Arief Syabana. All rights reserved.</span>
+    <nav>
+      <a href="https://github.com/aarief-s" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/lufthi-arief/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:lufthi73.com@gmail.com">Email</a>
+      <a class="top" href="#home" aria-label="Back to top"><svg aria-hidden="true"><use href="#i-up"/></svg></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    // Theme toggle
+    document.getElementById('theme').addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    // Mobile menu
+    var burger = document.getElementById('burger');
+    var menu = document.getElementById('menu');
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Highlight the current section in the nav
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && map[en.target.id]) {
+            links.forEach(function (l) { l.classList.remove('active'); });
+            map[en.target.id].classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(map).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    }
+  })();
+</script>
 </body>
 </html>
-
-
-
-
-
